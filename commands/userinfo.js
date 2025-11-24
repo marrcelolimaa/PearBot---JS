@@ -1,6 +1,13 @@
 //commands/userinfo.js
 const {EmbedBuilder} = require("discord.js");
 const emojinegado ="<a:negado:1442611204978905190>"
+const emojiuser = "<a:cabesa:1442614453039272138>"
+const emojiseta = "<a:setapracima:1442628536006606848>"
+const emojidata = "<a:dia:1442614569506701572>"
+const emojirelogio = "<a:relogio:1442631689862905993>"
+const emojichave = "<a:chave:1442631759228440587>"
+const emojisettings = "<a:settings:1442631826911924284>"
+
 module.exports = {
     data:{
         name: "userinfo",
@@ -30,13 +37,13 @@ module.exports = {
           .join(', ');
         const infoEmbed = new EmbedBuilder()
         .setColor(member.displayHexColor || 0x00BFFF)
-        .setTitle(`**📜 | Informações sobre ${user.tag}**`)
+        .setTitle(`**${emojiuser}  Informações sobre ${user.tag}**`)
         .setThumbnail(user.displayAvatarURL({dynamic:true}))
         .addFields(
-            {name: "**🗓 | Conta Criada em:**", value: createdDate, inline:true},
-            {name: "**📆 | Entrou no servidor em:**", value:joinedDate, inline:true},
-            {name: "**ID do Usuário:**", value:user.id, inline:false},
-            {name: `**Cargos** (${member.roles.cache.size - 1})`,
+            {name: `**${emojidata} Conta Criada em:**`, value: createdDate, inline:true},
+            {name: `**${emojirelogio} Entrou no servidor em:**`, value:joinedDate, inline:true},
+            {name: `${emojichave} **ID do Usuário:**`, value:user.id, inline:false},
+            {name: `**${emojisettings} Cargos** (${member.roles.cache.size - 1})`,
                                 value:roles || "Nenhum Cargo adicional.", inline:false}
         ) .setTimestamp();
 
