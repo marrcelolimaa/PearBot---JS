@@ -1,5 +1,8 @@
 // commands/kick.js
 const {EmbedBuilder, PermissionFlagsBits} = require("discord.js");
+const emojinegado = "<a:negado:1442611204978905190>"
+const emojisirene = "<a:sireneverde:1442611275543609384>"
+const emojicerto = "<a:check:1442611532159782912>"
 module.exports = {
     data: {
          name: "kick",
@@ -17,12 +20,12 @@ module.exports = {
                 memberAuthor = await message.guild.members.fetch(message.author.id);
             } catch (error) {
                 // Se a busca falhar (por exemplo, problema de conexão)
-                return message.reply("**❌ Erro ao verificar permissões: Não foi possível carregar seus dados.**");
+                return message.reply(`**${emojinegado} Erro ao verificar permissões: Não foi possível carregar seus dados.**`);
             }
         }
 
       if(!memberAuthor.permissions.has(PermissionFlagsBits.KickMembers)) {
-        return message.reply("❌ | ** Você não tem permissão para executar esse comando.**")
+        return message.reply(`**${emojinegado} Você não tem permissão para executar esse comando.**`)
       }
 
     const member = message.mentions.members.first();
@@ -33,17 +36,17 @@ module.exports = {
         return message.reply("**⚠ | Mencione um usuário válido para expulsar. Ex: !kick @usuário**");
     }
     if (member.roles.cache.has(CARGOPROTEGIDO)) {
-        return message.reply("🍐 | **Você não pode expulsar os CODATES, tente novamente mais tarde.**")
+        return message.reply("🍐 **Você não pode expulsar os CODATES, tente novamente mais tarde.**")
     }
     if (!member.kickable) {
-        return message.reply("**❌ | Não consigo expulsar este membro! Meu cargo está abaixo do dele.**")
+        return message.reply(`**${emojinegado} Não consigo expulsar este membro! Meu cargo está abaixo do dele.**`)
     }
     try {
         await member.kick(reason);
         const kickEmbed = new EmbedBuilder()
             .setColor(0xFF8C00)
-            .setTitle("🚨  **Usuário Expulso.**")
-            .setDescription(`**✅ | ${member.user.tag} foi expulso do servidor!**`)
+            .setTitle(`${emojisirene}   **Usuário Expulso.**`)
+            .setDescription(`**${emojicerto}   ${member.user.tag} foi expulso do servidor!**`)
             .addFields(
                 {name: "Moderador", value: message.author.tag, inline:true},
                 {name: "Razão", value: reason, inline:true}
@@ -53,7 +56,7 @@ module.exports = {
     message.channel.send({embeds: [kickEmbed]});
     } catch(error) {
         console.error("**❌ | Erro ao expulsar o usuário.**", error);
-        message.channel.send("❌ | **Ocorreu um erro ao processar a expulsão.**")
+        message.channel.send(`**${emojinegado} Ocorreu um erro ao processar a expulsão.**`)
     }
    }
 

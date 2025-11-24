@@ -1,5 +1,6 @@
 //commands/userinfo.js
 const {EmbedBuilder} = require("discord.js");
+const emojinegado ="<a:negado:1442611204978905190>"
 module.exports = {
     data:{
         name: "userinfo",
@@ -17,7 +18,7 @@ module.exports = {
                 user = fetchedUser; 
             } catch (e) {
                 console.error("Falha fatal ao buscar dados do usuário:", e);
-                return message.reply("❌ Não foi possível obter os dados da conta. Verifique o console.");
+                return message.reply(`**${emojinegado}  Não foi possível obter os dados da conta. Verifique o console.**`);
             }
         }
 
