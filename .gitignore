@@ -1,0 +1,10 @@
+# Este arquivo ignora arquivos e pastas que nao devem ser publicados no GitHub
+
+
+.env
+
+
+node_modules/
+
+
+.vscode/
