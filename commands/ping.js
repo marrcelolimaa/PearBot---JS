@@ -29,7 +29,7 @@ module.exports = {
                 { 
                     name: '**Processamento**', 
                     value: `**${messageLatency}ms**`, 
-                    inline: true 
+                    inline: false 
                 }
             )
             .setTimestamp(); 
