@@ -30,7 +30,7 @@ module.exports = {
     const reason = args.slice(1).join("") || "**Nenhum motivo fornecido.**";
 
     if (!member) {
-        return message.reply("**⚠ | Mencione um membro válido para expulsar. Ex: !kick @usúario**");
+        return message.reply("**⚠ | Mencione um usuário válido para expulsar. Ex: !kick @usuário**");
     }
     if (member.roles.cache.has(CARGOPROTEGIDO)) {
         return message.reply("🍐 | **Você não pode expulsar os CODATES, tente novamente mais tarde.**")
@@ -42,7 +42,7 @@ module.exports = {
         await member.kick(reason);
         const kickEmbed = new EmbedBuilder()
             .setColor(0xFF8C00)
-            .setTitle("🚨  **Membro Expulso.**")
+            .setTitle("🚨  **Usuário Expulso.**")
             .setDescription(`**✅ | ${member.user.tag} foi expulso do servidor!**`)
             .addFields(
                 {name: "Moderador", value: message.author.tag, inline:true},
@@ -52,7 +52,7 @@ module.exports = {
 
     message.channel.send({embeds: [kickEmbed]});
     } catch(error) {
-        console.error("**❌ | Erro ao expulsar membro.**", error);
+        console.error("**❌ | Erro ao expulsar o usuário.**", error);
         message.channel.send("❌ | **Ocorreu um erro ao processar a expulsão.**")
     }
    }

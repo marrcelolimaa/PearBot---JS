@@ -3,7 +3,7 @@ const {EmbedBuilder, PermissionsFlagsBits } = require("discord.js");
 module.exports = {
     data: {
         name:"ban",
-        description: "Bane um usúario permanentemente do servidor."
+        description: "Bane um usuário permanentemente do servidor."
     },
     async execute(message, args) {
         if(!message.guildId) {
@@ -14,19 +14,19 @@ module.exports = {
         const reason = args.slice(1).join("") || "**Nenhum motivo fornecido.**";
 
         if (!member) {
-            return message.reply("⚠ | **Mencione um membro válido para banir. Ex: !ban @usúario**")
+            return message.reply("⚠ | **Mencione um membro válido para banir. Ex: !ban @usuário**")
         }
         if(CARGOPROTEGIDO && member.roles.cache.has(CARGOPROTEGIDO)) {
             return message.reply("🍐 | **Você não pode banir os CODATES, tente novamente mais tarde.**")
         }
         if(!member.bannable) {
-            return message.reply("❌ | **Não consigo banir este membro. Meu cargo está abaixo do dele.**");
+            return message.reply("❌ | **Não consigo banir este usuário. Meu cargo está abaixo do dele.**");
         }
         try {
             await member.ban({reason: reason});
             const banEmbed = new EmbedBuilder()
                  .setColor(0xDC143C)
-                 .setTitle("🔨  **Membro Banido.**")
+                 .setTitle("🔨  **Usuário Banido.**")
                  .setDescription(`**✅ | ${member.user.tag} foi banido permanentemente.**`)
                  .addFields(
                     {name: "Moderador", value: message.author.tag, inline:true},
