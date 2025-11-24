@@ -1,5 +1,5 @@
-const { Client, GatewayIntentBits } = require('discord.js');
-
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const fs = require('fs');
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -13,70 +13,32 @@ client.on('ready', () => {
     client.user.setActivity('Insane ABACATE CODING DOG', { type: 3});
 });
 
-client.on('messageCreate', async (message) => {
-    const prefix = "!";
+client.commands = new Collection();
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(".js"));
+
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+        client.commands.set(command.data.name, command)
+}
+
+client.on('messageCreate', async message => {
+    const prefix = '!';
     if (!message.content.startsWith(prefix) || message.author.bot) return;
+
     const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const commands = args.shift().toLowerCase();
+    const commandName = args.shift().toLowerCase();;
 
-     if (commands === "ping") {
-        const apiPing = client.ws.ping;
-        message.channel.send(`**🔌 | Latência da API: ${apiPing}ms**`);
+    if (!client.commands.has(commandName)) return;
+    const command = client.commands.get(commandName);
+
+    try {
+        await command.execute(message, args, client);
+    } catch (error) {
+        console.error(error);
+        message.reply("**OOPS! Houve um erro ao executar esse comando, tente novamente!**");
     }
-
-    if (commands === "clear") {
-        if (!message.member.permissions.has("ManageMessages")) {
-            return message.reply("Você não tem permissão para usar este comando.");
-        }
-
-        const amount = parseInt(args[0]);
-        if (isNaN(amount) || amount < 1 || amount > 1000) {
-            return message.reply("Por favor, insira um número entre 1 e 100.");
-        }
-
-        try {
-            await message.channel.bulkDelete(amount, true);
-            message.channel.send(`🧹 ${amount} mensagens foram apagadas.`).then(msg => {
-                setTimeout(() => msg.delete(), 15000);
-            });
-        } catch (err) {
-            console.error(err);
-            message.reply("ERRO! Não foi possível apagar as mensagens.");
-        }
-    }
-
-    if (commands === "kick") {
-        if (!message.member.permissions.has("KickMembers")) {
-            return message.reply("Você não tem permissão para usar este comando.");
-        }
-        const member = message.mentions.members.first();
-        const reason = args.slice(1).join("") || "nenhum motivo fornecido";
-        const CARGOPROTEGIDO = "1332202964710068285";
-        
-        if (!member) {
-            return message.reply("Por favor, mencione um membro válido para expulsar.");
-        }
-
-        if (member.roles.cache.has(CARGOPROTEGIDO)) {
-            return message.reply("** ❌ VOCÊ NÃO PODE EXPULSAR OS PEARBROS 🍐**");
-        }
-
-        if (!member.kickable) {
-            return message.reply("** ❌ Não posso expulsar este usuário! Ele pode ter um cargo mais alto ou eu nao tenho permissões.**");
-        }
-
-        try {
-            await member.kick(reason);
-            message.channel.send(`🍐 *${member.user.tag} foi expulso. por: ${reason}*`);
-        } catch (err) {
-            console.error(err); 
-            message.reply("ERRO! Não foi possível expulsar esse membro.");
-        }
-    
-    }
-
-});
-
+})
 
 require('dotenv').config();
 const TOKEN = process.env.TOKEN;
