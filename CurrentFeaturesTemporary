@@ -1,0 +1,66 @@
+# 🍐 PearBot - Features Atuais
+
+## 📊 Dashboard
+```
+Status: ✅ Produção
+Versão: 1.0.0
+Última Atualização: 22/02/2025
+```
+
+## 🎯 Features Principais
+| Categoria | Status | Recursos |
+|-----------|--------|----------|
+| 🛠️ Core | ✅ | Sistema de Threads, Gestão de Colaboradores |
+| 🔒 Segurança | ✅ | Permissões, Rate Limiting, Auditoria |
+| 🔄 Manutenção | ✅ | Backup, Limpeza Automática, Logs |
+| 💫 QoL | ✅ | Auto-delete, Cache, Status |
+
+## 🔍 Detalhamento
+
+### 🛠️ Sistema Principal
+- ✅ Gerenciamento de Threads
+- ✅ Controle de Colaboradores
+- ✅ Canais Permitidos
+- ✅ Canal de Auditoria
+- ✅ Comandos Administrativos
+
+### 🔒 Segurança & Controle
+- ✅ Rate Limiting
+- ✅ Sistema de Permissões
+- ✅ Tratamento de Erros
+- ✅ Validações
+
+### 🔄 Manutenção Automática
+- ✅ Limpeza de Threads (30 dias)
+- ✅ Backup (12/12h)
+- ✅ Logging Detalhado
+- ✅ Monitoramento
+
+### 💫 Quality of Life
+- ✅ Mensagens Temporárias
+- ✅ Sistema de Cache
+- ✅ Status do Bot
+- ✅ Comandos de Ajuda
+
+## 📝 Checklist de Produção
+
+### 🚀 Setup Inicial
+1. [ ] Configurar `.env`
+2. [ ] Verificar permissões do bot
+3. [ ] Configurar canal de auditoria
+4. [ ] Adicionar canais permitidos
+5. [ ] Testar logs iniciais
+
+### 🔍 Monitoramento
+- [ ] Verificar logs diariamente
+- [ ] Monitorar backups
+- [ ] Acompanhar uso do cache
+- [ ] Observar rate limits
+
+## 📈 Métricas
+```
+Tempo de Limpeza: 30 dias
+Intervalo de Backup: 12 horas
+Cooldown: 3 segundos
+Cache Timeout: 5 minutos
+```
