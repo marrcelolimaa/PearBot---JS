@@ -1,5 +1,7 @@
 # 🍐 PearBot
 
+DESCRIÇAO TEMPORARIA!!!!!!!!!!!!!!
+
 <div align="center">
 
 ![Logo](https://i.imgur.com/zAeVlt9.png)
