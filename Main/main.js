@@ -16,10 +16,10 @@ client.on('clientReady', () => {
 
 client.commands = new Collection();
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(".js"));
+const commandFiles = fs.readdirSync('./Main/commands').filter(file => file.endsWith(".js"));
 
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
+    const command = require(`./Main/commands/${file}`);
         client.commands.set(command.data.name, command)
 }
 
