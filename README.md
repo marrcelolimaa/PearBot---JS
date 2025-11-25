@@ -1,16 +1,15 @@
-# 🍐 PearBot
 
-DESCRIÇAO TEMPORARIA!!!!!!!!!!!!!!
+# 🍏 GreenBot
 
 <div align="center">
 
 ![Logo](https://i.imgur.com/zAeVlt9.png)
 
 [![Discord](https://img.shields.io/discord/1331778739838783509?color=7289da&label=Discord&logo=discord&logoColor=ffffff)](https://discord.gg/WGTAaPFDkD)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/JvictorDevx/Abacode)
-[![Status](https://img.shields.io/badge/status-production-success.svg)](https://github.com/JvictorDevx/Abacode)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/seu-usuario/GreenBot)
+[![Status](https://img.shields.io/badge/status-production-success.svg)](https://github.com/seu-usuario/GreenBot)
 
-*Um bot de Discord para gerenciamento inteligente de threads (em breve muito mais...)*
+*Um bot de Discord para moderação e gestão de servidores (em breve muito mais...)*
 
 [Features](CurrentFeatures.md) •
 [Documentação](CHEATSHEET.md) •
@@ -20,71 +19,49 @@ DESCRIÇAO TEMPORARIA!!!!!!!!!!!!!!
 </div>
 
 ## 📋 Sobre
-PearBot é um bot de Discord especializado em gerenciamento de threads, oferecendo controle granular sobre discussões e colaboração em canais de texto.
-(novas funções para o bot irão surgir em atualizações futuras)
+PearBot é um bot de Discord focado em **moderação** e **gestão de servidores**, oferecendo funcionalidades que ate o momento são: banimento, kick, limpeza de mensagens, consultas de informações de usuários e ping.
 
 ## ⭐ Destaques
-- 🛠️ **Sistema de Threads**: Gerenciamento completo de threads
-- 🔒 **Controle de Acesso**: Sistema robusto de permissões
-- 📊 **Auditoria**: Logs detalhados de todas as ações
-- 🔄 **Automação**: Backup e limpeza automática
-- 💫 **QoL**: Auto-delete e cache inteligente
+- 🛠️ **Comandos de Moderação**: Banir, kickar e desbanir usuários
+- 🔧 **Limpeza de Mensagens**: Apagar mensagens com facilidade
+- 📊 **Informações de Servidor**: Comando de ping para verificar latência
+- 👤 **Informações de Usuário**: Consultar dados sobre usuários específicos
 
-## 🚀 Começando
 
-### Pré-requisitos
-```bash
-Python 3.8+
-pip (gerenciador de pacotes Python)
-Discord Bot Token
-```
-
-### Instalação
-```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/Abacode.git
-
-# Entre no diretório
-cd Abacode
-
-# Instale as dependências
-pip install -r requirements.txt
-
-# Configure o arquivo .env
-echo DISCORD_TOKEN=seu_token_aqui > .env
-```
 
 ## 📖 Uso
 
 ### Comandos Básicos
 ```
-/c <nome>           - Cria uma nova thread
-/add_c <thread> <@> - Adiciona colaborador
-/del_c <thread> <@> - Remove colaborador
-/ajuda              - Lista todos os comandos
+!ban <@usuario>            - Banir um usuário do servidor
+!kick <@usuario>           - Kickar um usuário do servidor
+!clear <quantidade>        - Limpar um número de mensagens
+!ping                      - Verificar a latência do bot
+!unban <@usuario>          - Desbanir um usuário
+!userinfo <@usuario>       - Obter informações detalhadas sobre um usuário
 ```
 
-### Comandos Admin
-```
-/config add <canal> - Adiciona canal permitido
-/config del <canal> - Remove canal permitido
-/config ad <canal>  - Define canal de auditoria
-```
+### Exemplo de Uso:
+- **!ban @usuario**: Banir o usuário mencionado do servidor.
+- **!clear 10**: Limpar as últimas 10 mensagens do canal.
+- **!userinfo @usuario**: Exibir informações sobre o usuário mencionado, como ID, data de entrada no servidor, etc.
 
 ## 🛠️ Desenvolvimento
 
 ### Estrutura
 ```
-Abacode/
-├── Bot Main/
-│   ├── Main/
-│   │   ├── main.py
-│   │   └── .env
-│   └── Launcher/
-│       └── launcher.py
-├── docs/
-│   ├── CHEATSHEET.md
-│   └── CurrentFeatures.md
+Pearbot/
+├── Main/
+│   ├── commands/
+│   │   ├── ban.js
+│   │   ├── clear.js
+│   │   ├── kick.js
+│   │   ├── ping.js
+│   │   ├── unban.js
+│   │   └── userinfo.js
+│   ├── main.js
+│   └── .env
+├── Version logs
 └── README.md
 ```
 
@@ -94,20 +71,19 @@ Veja [CurrentFeatures.md](CurrentFeatures.md) para uma lista completa.
 ## 📝 Notas de Versão
 - **v1.0.0** (22/02/2025)
   - Lançamento inicial
-  - Sistema completo de threads
-  - Backup automático
-  - Logging detalhado
+  - Comandos de moderação (ban, kick, unban)
+  - Limpeza de mensagens
+  - Informações sobre ping e usuário
 
 ## 🤝 Suporte
-- Discord: [Servidor PearCode](https://discord.gg/WGTAaPFDkD)
-- Issues: [GitHub Issues](https://github.com/JvictorDevx/Abacode/issues)
+- Discord: [Servidor Pearcode](https://discord.gg/WGTAaPFDkD)
+- Issues: [GitHub Issues](https://github.com/seu-usuario/GreenBot/issues)
 
 ## 🙏 Agradecimentos
-- [Discord.py](https://github.com/Rapptz/discord.py)
-- [Python-dotenv](https://github.com/theskumar/python-dotenv)
-- Todos os contribuidores e usuários
+- [discord.js](https://github.com/discordjs/discord.js)
+- [dotenv](https://github.com/motdotla/dotenv)
 
 ---
 <div align="center">
-Feito com 🍐 pela PearCode
+Feito com 🍐 pela Pearcode
 </div>
