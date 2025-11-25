@@ -1,5 +1,5 @@
 
-# 🍏 GreenBot
+# 🍐 PearBot
 
 <div align="center">
 
