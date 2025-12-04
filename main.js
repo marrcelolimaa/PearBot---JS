@@ -39,7 +39,7 @@ client.on('messageCreate', async message => {
       .addFields(
         {
             name: `${CONFIG} **Como usar os comandos:**`,
-            value: `Use o Prefixo **"!"** `,
+            value: `Use o Prefixo **"!"** ou **/** `,
             inline: false
         },
         {
@@ -47,7 +47,9 @@ client.on('messageCreate', async message => {
             value: "Digite **!help** para ver a lista completa de comandos.",
             inline: false
         }
-      ) .setTimestamp();
+      ) 
+      .setFooter({text: "PearBot", iconURL: client.user.avatarURL()})
+      .setTimestamp();
       return message.channel.send({embeds: [mentionEmbed]});
    }
    if (!message.content.startsWith(prefix)) return;
