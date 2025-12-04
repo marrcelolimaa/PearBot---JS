@@ -69,7 +69,6 @@ module.exports = {
     },
 };
 
-// Função auxiliar para formatar o Uptime do Bot (opcional, mas recomendado)
 function formatUptime(ms) {
     const days = Math.floor(ms / (1000 * 60 * 60 * 24));
     ms -= days * (1000 * 60 * 60 * 24);
