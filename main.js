@@ -15,7 +15,7 @@ const client = new Client({
 
 client.on('clientReady', () => {
     console.log(`Bot Online! ${client.user.tag}`);
-    client.user.setActivity('Insane ABACATE CODING DOG', { type: 3});
+    client.user.setActivity('📜 | !help para ajuda!', { type: 2});
 });
 
 client.commands = new Collection();
