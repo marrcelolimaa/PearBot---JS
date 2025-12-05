@@ -2,6 +2,7 @@
 const EMOJIS = require("../config/emojis")
 const{SlashCommandBuilder} = require("@discordjs/builders")
 module.exports = {
+    category: "Mod",
     data: new SlashCommandBuilder()
         .setName("clear")
         .setDescription(`${EMOJIS.LIXO} **Limpa um número específico de mensagens do canal. (1-100)**`),
