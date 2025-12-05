@@ -13,12 +13,12 @@ module.exports = {
         }
         const amount = parseInt(args[0]);
         if(isNaN(amount) || amount < 1 || amount > 100) {
-            return message.reply(`** ${EMOJIS.NEGADO} Por favor, insira um número entre 1 e 100 para o número de mensagens a serem apagadas.**`)          
+            return message.reply(`** ${EMOJIS.NEGADO} Por favor, insira um número entre \`1-100\` para o número de mensagens a serem apagadas.**`)          
         }
 
         try {
             await message.channel.bulkDelete(amount, true);
-            message.channel.send(`**${EMOJIS.CHECK} ${amount} mensagens foram apagadas com sucesso!**`);
+            message.channel.send(`**${EMOJIS.LIXO} \`${amount}\` mensagens foram apagadas com sucesso!**`);
         }
          catch(error) {
             console.error(error);
