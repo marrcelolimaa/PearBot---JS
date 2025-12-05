@@ -27,7 +27,7 @@ module.exports = {
 
         // 2. Criação do Embed
         const pingEmbed = new EmbedBuilder()
-            .setColor(0x00BFFF) // Azul claro
+            .setColor(0xFF8C00) 
             .setTitle(`**${EMOJIS.CHECK} Latência e Status do Bot**`)
             .setDescription(`**Detalhes da performance e latência em milissegundos** \`ms\`:`)
             .setThumbnail(client.user.displayAvatarURL())
