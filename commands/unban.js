@@ -7,7 +7,7 @@ module.exports = {
         .setName("unban")
         .setDescription(`${EMOJIS.CHAVE} **Desbane um usuário do servidor.**`),
         
-    async execute(message, args) {
+    async execute(message, args, client) {
         if(!message.guildId) {
             return message.reply(`${EMOJIS.NEGADO} **Este comando só pode ser executado em um servidor.**`)
         }
@@ -15,7 +15,7 @@ module.exports = {
             return message.reply(`${EMOJIS.NEGADO} **Você não tem permissão para executar este comando.**`)
         }
         const userId = args[0];
-        const reason = (args || []).slice(1).join(' ') || "**Nenhuma razão fornecida.**";
+        const reason = (args || []).slice(1).join(' ') || "Nenhuma razão fornecida.";
 
         if(!userId) {
             return message.reply(`${EMOJIS.USER} **Forneça o id do usuário que você deseja retirar o banimento.**`)
@@ -24,12 +24,13 @@ module.exports = {
             const user = await message.guild.bans.remove(userId, reason);
             const unbanEmbed = new EmbedBuilder()
             .setColor(0x9ACD32)
-            .setTitle(`${EMOJIS.CHECK} **Banimento Removido.**`)
-            .setDescription(`**${EMOJIS.CHAVE} ${user.tag}** (ID: ${user.id})** foi desbanido**.`)
+            .setTitle(`${EMOJIS.CHECK} **Banimento Removido**`)
+            .setDescription(`${EMOJIS.CHAVE} \`${user.tag}\`** foi desbanido**.`)
             .addFields(
-                {name: "Moderador", value: message.author.tag, inline:true},
-                {name: "Razão", value: reason, inline:true}
+                {name: `${EMOJIS.USER} Moderador`, value: `\`${message.author.tag}\``, inline:true},
+                {name: `${EMOJIS.ARTIGO} Razão`, value: `\`${reason}\``, inline:true}
             )
+            .setFooter({text: "PearBot", iconURL: client.user.displayAvatarURL()})
             .setTimestamp();
 
         message.channel.send({embeds: [unbanEmbed]});

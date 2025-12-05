@@ -8,16 +8,16 @@ module.exports = {
     .setName("ban")
     .setDescription(`${EMOJIS.CHAVE} **Bane um usuário permanentemente do servidor.**`),
 
-    async execute(message, args) {
+    async execute(message, args, client) {
         if(!message.guildId) {
             return message.reply("**❌ | Esse comando só pode ser usado em um servidor.**")
         }
         const CARGOPROTEGIDO = "1332202964710068285";
         const member = message.mentions.members.first();
-        const reason = args.slice(1).join("") || "Nenhum motivo fornecido.";
+        const reason = args.slice(1).join(" ") || "Nenhum motivo fornecido.";
 
         if (!member) {
-            return message.reply(`${EMOJIS.SIRENE} **Mencione um membro válido para banir. \n${EMOJIS.CHECK} Ex: !ban @usuário**`)
+            return message.reply(`${EMOJIS.SIRENE} **Mencione um membro válido para banir.** \n \`Ex: !ban @usuário\``)
         }
         if(CARGOPROTEGIDO && member.roles.cache.has(CARGOPROTEGIDO)) {
             return message.reply("🍐 | **Você não pode banir os CODATES, tente novamente mais tarde.**")
@@ -29,12 +29,13 @@ module.exports = {
             await member.ban({reason: reason});
             const banEmbed = new EmbedBuilder()
                  .setColor(0x9ACD32)
-                 .setTitle(`${EMOJIS.CHAVE} **Usuário Banido.**`)
+                 .setTitle(`${EMOJIS.CHAVE} **Usuário Banido**`)
                  .setDescription(`**${EMOJIS.CHECK} \`${member.user.tag}\` foi banido permanentemente.**`)
                  .addFields(
                     {name: `${EMOJIS.USER} Moderador`, value: `\`${message.author.tag}\``, inline:true},
                     {name: `${EMOJIS.ARTIGO} Razão`, value: `\`${reason}\``, inline:true}
                  )
+                 .setFooter({text: "PearBot", iconURL: client.user.displayAvatarURL()})
                  .setTimestamp();
             message.channel.send({embeds: [banEmbed]});
         } catch(error) {
