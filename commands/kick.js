@@ -3,11 +3,12 @@ const {EmbedBuilder, PermissionFlagsBits} = require("discord.js");
 const EMOJIS = require("../config/emojis.js");
 const{SlashCommandBuilder} = require ("@discordjs/builders")
 module.exports = {
+    category: "Mod",
     data: new SlashCommandBuilder()
          .setName("kick")
          .setDescription(`**${EMOJIS.CHAVE} Expulsa um membro do servidor**`),
          
-   async execute(message, args) {
+   async execute(message, args, client) {
       if(!message.guild) {
         return message.reply("**⚠ | Este comando só pode ser usado em um servidor!**")
       }
@@ -29,10 +30,10 @@ module.exports = {
 
     const member = message.mentions.members.first();
     const CARGOPROTEGIDO = "1332202964710068285"
-    const reason = args.slice(1).join("") || "**Nenhum motivo fornecido.**";
+    const reason = args.slice(1).join("") || "Nenhum motivo fornecido.";
 
     if (!member) {
-        return message.reply(`**${EMOJIS.SIRENE} Mencione um usuário válido para expulsar. Ex: !kick @usuário**`);
+        return message.reply(`**${EMOJIS.SIRENE} Mencione um usuário válido para expulsar.** \n\`Ex: !kick @usuário\``);
     }
     if (member.roles.cache.has(CARGOPROTEGIDO)) {
         return message.reply("🍐 **Você não pode expulsar os CODATES, tente novamente mais tarde.**")
@@ -44,12 +45,13 @@ module.exports = {
         await member.kick(reason);
         const kickEmbed = new EmbedBuilder()
             .setColor(0xFF8C00)
-            .setTitle(`${EMOJIS.SIRENE}  **Usuário Expulso.**`)
-            .setDescription(`**${EMOJIS.CHECK}   ${member.user.tag} foi expulso do servidor!**`)
+            .setTitle(`${EMOJIS.SIRENE}  **Usuário Expulso**`)
+            .setDescription(`**${EMOJIS.CHECK}   \`${member.user.tag}\` foi expulso do servidor!**`)
             .addFields(
-                {name: "Moderador", value: message.author.tag, inline:true},
-                {name: "Razão", value: reason, inline:true}
+                {name: `${EMOJIS.USER} Moderador`, value: `\`${message.author.tag}\``, inline:true},
+                {name: `${EMOJIS.ARTIGO} Razão`, value: `\`${reason}\``, inline:true}
             )
+            .setFooter({text: "PearBot", iconURL: client.user.displayAvatar()})
             .setTimestamp();
 
     message.channel.send({embeds: [kickEmbed]});
