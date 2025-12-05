@@ -51,7 +51,7 @@ module.exports = {
                 {name: `${EMOJIS.USER} Moderador`, value: `\`${message.author.tag}\``, inline:true},
                 {name: `${EMOJIS.ARTIGO} Razão`, value: `\`${reason}\``, inline:true}
             )
-            .setFooter({text: "PearBot", iconURL: client.user.displayAvatar()})
+            .setFooter({text: "PearBot", iconURL: client.user.displayAvatarURL()})
             .setTimestamp();
 
     message.channel.send({embeds: [kickEmbed]});
