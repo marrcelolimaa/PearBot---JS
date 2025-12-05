@@ -64,7 +64,7 @@ module.exports = {
             });
         }
         helpEmbed.setTimestamp()
-                 .setFooter({text: `PearBot  |  Total de Comandos listados: ${groupedCommands.size} categoria`});
+                 .setFooter({text: `PearBot  |  Categorias listadas: ${groupedCommands.size}`, iconURL: client.user.displayAvatarURL()});
 
         if(isSlashCommand) {
             await interactionOrMessage.reply({embeds: [helpEmbed], ephemeral: true});
