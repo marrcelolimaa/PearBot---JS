@@ -14,7 +14,7 @@ module.exports = {
         }
         const CARGOPROTEGIDO = "1332202964710068285";
         const member = message.mentions.members.first();
-        const reason = args.slice(1).join("") || "**Nenhum motivo fornecido.**";
+        const reason = args.slice(1).join("") || "Nenhum motivo fornecido.";
 
         if (!member) {
             return message.reply(`${EMOJIS.SIRENE} **Mencione um membro válido para banir. \n${EMOJIS.CHECK} Ex: !ban @usuário**`)
@@ -32,8 +32,8 @@ module.exports = {
                  .setTitle(`${EMOJIS.CHAVE} **Usuário Banido.**`)
                  .setDescription(`**${EMOJIS.CHECK} \`${member.user.tag}\` foi banido permanentemente.**`)
                  .addFields(
-                    {name: "Moderador", value: `\`${message.author.tag}\``, inline:true},
-                    {name: "Razão", value: `\`${reason}\``, inline:true}
+                    {name: `${EMOJIS.USER} Moderador`, value: `\`${message.author.tag}\``, inline:true},
+                    {name: `${EMOJIS.ARTIGO} Razão`, value: `\`${reason}\``, inline:true}
                  )
                  .setTimestamp();
             message.channel.send({embeds: [banEmbed]});
