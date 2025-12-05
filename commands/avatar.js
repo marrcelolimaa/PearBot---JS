@@ -28,7 +28,7 @@ module.exports = {
         const avatarURL = targetUser.displayAvatarURL({dynamic: true, size: 512});
         const iconEmbed = new EmbedBuilder()
         .setColor(0xFF8C00)
-        .setTitle(`🖼 Avatar do usuário ${targetUser.tag}`)
+        .setTitle(`🖼  ${targetUser.tag}`)
         .setDescription(`[**Clique aqui para abrir o avatar em tamanho original**](${avatarURL})`)
         .setImage(avatarURL)
         .setFooter({text: `PearBot  |  Solicitado por ${interactionOrMessage.user ? interactionOrMessage.user.tag : interactionOrMessage.author.tag}`, iconURL: client.user.displayAvatarURL()})
