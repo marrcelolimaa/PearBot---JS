@@ -2,6 +2,7 @@ const{EmbedBuilder} = require("discord.js")
 const{SlashCommandBuilder} = require("@discordjs/builders");
 const EMOJIS = require("../config/emojis.js");
 module.exports = {
+    category: "Info",
     data: new SlashCommandBuilder()
     .setName("serverinfo")
     .setDescription(`${EMOJIS.ARTIGO} **Exibe as informações detalhadas sobre este servidor.**`),
@@ -29,17 +30,18 @@ module.exports = {
 
         const serverEmbed = new EmbedBuilder()
             .setColor(0x9ACD32)
-            .setTitle(`${EMOJIS.PERA} **Informações do Servidor: ${guild.name}**`)
+            .setTitle(`${EMOJIS.DC}  **${guild.name}**`)
             .setThumbnail(guild.iconURL({dynamic: true}))
             .addFields(
-                {name: `${EMOJIS.CONFIG} **ID do Servidor**`, value: guild.id, inline: true},
-                {name: `${EMOJIS.USER} **Proprietário**`, value: `<@${guild.ownerId}>`, inline: true},
-                {name: `${EMOJIS.RELOGIO} **Criado em**`, value: creationDate, inline: true},
-                {name: `**Membros (${memberCount})**`, value: `${EMOJIS.USER} **Usuários:** ${userCount}\n${EMOJIS.CHAVE} **Bots:** ${botCount}`, inline: true},
+                {name: `${EMOJIS.COROA} **Dono do Servidor**`, value: `<@${guild.ownerId}>`, inline: false},
+                {name: `${EMOJIS.CONFIG} **ID do Servidor**`, value: `\`${guild.id}\``, inline: false},
+                {name: `${EMOJIS.RELOGIO} **Criado em**`, value: `\`${creationDate}\``, inline: false},
+                {name: `**Membros (${memberCount})**`, value: `${EMOJIS.USER} **Usuários:** \`${userCount}\`\n${EMOJIS.CHAVE} **Bots:** \`${botCount}\``, inline: true},
                 {name: `**Canais (${textChannels + voiceChannels})**`,
-                 value: `${EMOJIS.ARTIGO} **Texto: ${textChannels}\n${EMOJIS.FONE} Voz: ${voiceChannels}**`,
+                 value: `${EMOJIS.ARTIGO} **Texto: \`${textChannels}\`\n${EMOJIS.FONE} Voz: \`${voiceChannels}\`**`,
                  inline: true},
             )
+            .setFooter({text: "PearBot", iconURL: context.client.user.displayAvatarURL({dynamic: true, size:64})})
             .setTimestamp();
             await sendReply({embeds: [serverEmbed]});
     },
