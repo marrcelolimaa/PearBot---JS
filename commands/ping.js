@@ -3,6 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const EMOJIS = require("../config/emojis"); 
 
 module.exports = {
+    category: "Info",
     data: new SlashCommandBuilder()
         .setName('ping')
         .setDescription(`${EMOJIS.WIFI} Retorna a latência da API e do sistema do bot.`),
