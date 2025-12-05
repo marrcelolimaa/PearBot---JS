@@ -3,6 +3,7 @@ const {EmbedBuilder, PermissionsFlagsBits } = require("discord.js");
 const EMOJIS = require("../config/emojis");
 const{SlashCommandBuilder} = require("@discordjs/builders");
 module.exports = {
+    category: "Mod",
     data: new SlashCommandBuilder()
     .setName("ban")
     .setDescription(`${EMOJIS.CHAVE} **Bane um usuário permanentemente do servidor.**`),
@@ -29,10 +30,10 @@ module.exports = {
             const banEmbed = new EmbedBuilder()
                  .setColor(0x9ACD32)
                  .setTitle(`${EMOJIS.CHAVE} **Usuário Banido.**`)
-                 .setDescription(`**${EMOJIS.CHECK} ${member.user.tag} foi banido permanentemente.**`)
+                 .setDescription(`**${EMOJIS.CHECK} \`${member.user.tag}\` foi banido permanentemente.**`)
                  .addFields(
-                    {name: "Moderador", value: message.author.tag, inline:true},
-                    {name: "Razão", value: reason, inline:true}
+                    {name: "Moderador", value: `\`${message.author.tag}\``, inline:true},
+                    {name: "Razão", value: `\`${reason}\``, inline:true}
                  )
                  .setTimestamp();
             message.channel.send({embeds: [banEmbed]});
