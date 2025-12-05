@@ -3,6 +3,7 @@ const{EmbedBuilder, PermissionFlagsBits} = require("discord.js");
 const EMOJIS = require("../config/emojis.js");
 const{SlashCommandBuilder} = require("@discordjs/builders")
 module.exports = {
+    category: "Mod",
     data: new SlashCommandBuilder()
         .setName("unban")
         .setDescription(`${EMOJIS.CHAVE} **Desbane um usuário do servidor.**`),
